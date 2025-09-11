@@ -1,0 +1,20 @@
+use context starter2024
+c= circle(30, "solid", "blue")
+t= triangle(50, "outline", "red")
+r= rectangle(40, 20, "solid", "green")
+rp= rectangle(40, 20, "solid", "purple")
+ry= rectangle(40, 20, "solid", "yellow")
+rr= rectangle(100, 20, "solid", "red")
+rsp= rectangle(2,2000, "solid", "white")
+polygon=regular-polygon(100, 20, "solid", "red")
+pole=rsp
+stop_sign=text("STOP", 40, "white")
+stop=overlay(stop_sign,polygon)
+
+
+string-to-upper("hello cs2000!")
+above(c,ry)
+above(r,rp)
+rotate(45,rr)
+rotate(60,rr)
+overlay(stop_sign, polygon)
