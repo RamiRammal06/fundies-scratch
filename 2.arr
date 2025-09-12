@@ -6,6 +6,8 @@ rp= rectangle(40, 20, "solid", "purple")
 ry= rectangle(40, 20, "solid", "yellow")
 rr= rectangle(100, 20, "solid", "red")
 rsp=rectangle(2,100, "solid", "white")
+
+#code for stop sign
 polygon=regular-polygon(100, 8, "solid", "red")
 stop_sign=text("STOP", 50, "white")
 stop=overlay(stop_sign,polygon)
