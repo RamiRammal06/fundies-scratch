@@ -25,3 +25,10 @@ below(rectangle(10, 100, "solid", "black"),stop_sign)
 #fixed codes that were wrote wrong
 rectangle(50, 20, "solid", "black")
 circle(30, "solid", "red")
+
+#made Germany's flag
+rec_black=rectangle(100, 20, "solid", "black")
+rec_red=rectangle(100, 20, "solid", "red")
+rec_yellow=rectangle(100, 20, "solid", "yellow")
+b_r=above(rec_black,rec_red)
+above(b_r,rec_yellow)
