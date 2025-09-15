@@ -20,6 +20,8 @@ gc=circle(20,"solid", "green")
 ry=above(rc,yc)
 stop_colors=above(ry,gc)
 stop_sign=overlay-align("center", "middle", stop_colors,br)
-
-
 below(rectangle(10, 100, "solid", "black"),stop_sign)
+
+#fixed codes that were wrote wrong
+rectangle(50, 20, "solid", "black")
+circle(30, "solid", "red")
