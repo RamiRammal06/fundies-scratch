@@ -22,8 +22,9 @@ stop_colors=above(ry,gc)
 stop_sign=overlay-align("center", "middle", stop_colors,br)
 below(rectangle(10, 100, "solid", "black"),stop_sign)
 
-#fixed codes that were wrote wrong
+#fixed error by rearranging 20 with solid
 rectangle(50, 20, "solid", "black")
+#fixed error by putting quotations around solid 
 circle(30, "solid", "red")
 
 #made Germany's flag
