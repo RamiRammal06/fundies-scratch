@@ -11,3 +11,15 @@ use context starter2024
 #combines the two words 
 "red" + "blue" 
 #1 + "blue" leaves an error since it was given a number and string
+
+#code for stop light 
+br=rectangle(50, 150, "solid", "black")
+rc=circle(20, "solid", "red")
+yc=circle(20, "solid", "yellow")
+gc=circle(20,"solid", "green")
+ry=above(rc,yc)
+stop_colors=above(ry,gc)
+stop_sign=overlay-align("center", "middle", stop_colors,br)
+
+
+below(rectangle(10, 100, "solid", "black"),stop_sign)
