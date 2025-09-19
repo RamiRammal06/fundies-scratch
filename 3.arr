@@ -15,3 +15,20 @@ fun tshirt-cost(
 end
 tshirt-cost(4, "Go Team!")
 tshirt-cost(7, "Hello World")
+
+fun celsius-to-farenheit(c :: Number) -> Number:
+  doc:"Turns Celsius into farenheit"
+  (c * (9 / 5)) + 32
+end
+
+
+check:
+  celsius-to-farenheit(37.5) is (37.5 * (9 / 5)) + 32
+end
+
+fun farenheit-to-celsius(f :: Number) -> Number:
+  doc:"Turns Farenheit into Celsius"
+  (f - 32) * 5/9
+end
+
+
