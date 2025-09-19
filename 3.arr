@@ -32,3 +32,6 @@ fun farenheit-to-celsius(f :: Number) -> Number:
 end
 
 
+check:
+  farenheit-to-celsius(32) is 0
+end
