@@ -2,10 +2,10 @@ use context starter2024
 
 fun choose-hat(temp-in-C :: Number) -> String:
   doc: "determines appropriate head gear, with above 27C a sun hat, below nothing"
-  if temp-in-C >= 27:
+ if temp-in-C >= 27:
     "sun hat"
-    if tem-in-C <= 10:
-      "winter hat"
+  else if temp-in-C <= 10:
+    "winter hat"
   else:
     "no hat"
   end
