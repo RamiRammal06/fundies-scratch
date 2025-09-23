@@ -16,10 +16,28 @@ where:
   choose-hat(10) is "winter hat"
   choose-hat(0) is "winter hat"
 end
+fun add-glasses(outfit :: String) -> String:
+  doc:"adds glasses to whatever function choose-hat gives"
+  outfit + ", and glasses"
+where:
+  add-glasses("winter hat") is "winter hat, and glasses"
+end
+
+fun choose-outfit(temp-in-C :: Number) -> String:
+  doc: "picks an outfit based on temperature, then adds glasses no matter what"
+  add-glasses(choose-hat(temp-in-C))
+where:
+  choose-outfit(25) is "no hat, and glasses"
+  choose-outfit(32) is "sun hat, and glasses"
+  choose-outfit(27) is "sun hat, and glasses"
+  choose-outfit(10) is "winter hat, and glasses"
+  choose-outfit(0)  is "winter hat, and glasses"
+end
+
 
 fun mysterious-function(x)block:
   #First expression
-  print("Inpute value is: " + num-to-string(x))
+  print("Input value is: " + num-to-string(x))
     #conditionals also produce expressions
   if x == 0:
       1
