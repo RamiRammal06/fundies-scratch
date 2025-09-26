@@ -1,4 +1,4 @@
-use context starter2024
+use context dcic2024
 include csv
 include data-source
 
@@ -31,3 +31,5 @@ Glucose = load-table:
   sanitize  exercise_duration using num-sanitizer
   sanitize  stress_level using num-sanitizer
 end
+
+scatter-plot(Glucose, "glucose_level", "stress_level")
