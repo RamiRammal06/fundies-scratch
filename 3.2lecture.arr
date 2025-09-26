@@ -1,7 +1,7 @@
 use context dcic2024
 include csv
 include data-source
-
+#plant table
 Plant = load-table:
   plant_common_name :: string,
   location_latitude :: number,
@@ -15,7 +15,7 @@ source:csv-table-url("https://raw.githubusercontent.com/NU-London/LCSCI4207-data
    
 end
 
-
+#glucose table
 Glucose = load-table:
   patient_id :: string,
   glucose_level :: number,
@@ -33,3 +33,4 @@ Glucose = load-table:
 end
 
 scatter-plot(Glucose, "glucose_level", "stress_level")
+#shows graph with all glucose data
