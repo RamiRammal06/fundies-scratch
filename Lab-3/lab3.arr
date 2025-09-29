@@ -24,3 +24,31 @@ where:
   tick(59) is 0
   tick(58) is 59
 end
+
+fun rock-paper-scissors(Player-1 :: String, Player-2 :: String)->String:
+  doc:"determines who won rock paper scissors"
+  if
+    Player-1 == Player-2:
+    "tie"
+  else if 
+    (Player-1 == "rock") and (Player-2 == "scissors"):
+    "Player-1 wins"
+  else if 
+    (Player-1 == "paper") and (Player-2 == "rock"):
+    "Player-1 wins"
+  else if 
+    (Player-1 == "scissors") and (Player-2 == "paper"):
+    "Player-1 wins"
+  else: 
+    "Player-2 wins"
+  end
+where:
+  rock-paper-scissors("rock","scissors") is
+  "Player-1 wins"
+  rock-paper-scissors("rock","paper") is
+  "Player-2 wins"
+  rock-paper-scissors("rock","rock") is
+  "tie"
+end
+  
+  
