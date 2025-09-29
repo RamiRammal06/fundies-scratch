@@ -11,3 +11,16 @@ where:
   leap-year(2025) is false
   leap-year(2024) is true
 end
+
+fun tick(s :: Number)-> Number:
+  doc: "determines the next second that comes after the current second"
+  if
+    s < 59:
+    s + 1
+  else: 
+    0
+  end
+where:
+  tick(59) is 0
+  tick(58) is 59
+end
