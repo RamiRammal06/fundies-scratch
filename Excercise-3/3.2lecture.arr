@@ -1,6 +1,7 @@
 use context dcic2024
 include csv
 include data-source
+include table
 #plant table
 Plant = load-table:
   plant_common_name :: string,
