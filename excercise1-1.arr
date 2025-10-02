@@ -1,27 +1,31 @@
-use context starter2024
+use context dcic2024
 include csv
 include data-source
-include table
-#plant table
-#forest table
-Plant = load-table:
-  plant_common_name :: string,
-  location_latitude :: number,
-  location_longitude :: number,
-  date_sighted :: number,
-  soil_type :: string,
-  plant_height_cm :: number,
-  plant_color :: string
-source:csv-table-url("include data-source
-#plant table
-Plant = load-table:
-  plant :: string,
-  location_latitude :: number,
-  location_longitude :: number,
-  date_sighted :: number,
-  soil_type :: string,
-  plant_height_cm :: number,
-  plant_color :: string
-source:csv-table-url("https://raw.githubusercontent.com/NU-London/LCSCI4207-datasets/refs/heads/main/plant_sightings.csv",
-  default-options)",
-  default-options)
+include tables
+
+photos = load-table:
+  Location :: String,
+  Subject :: String,
+  Date :: String
+  source: csv-table-url(
+    "https://raw.githubusercontent.com/NU-London/LCSCI4207-datasets/refs/heads/main/photos.csv",
+    default-options)
+end
+
+# filters subjects called Forest
+forest-photos = filter-with(photos, lam(r): r["Subject"] == "Forest" end)
+
+# order by latest to earliest
+forest-sorted = order-by(forest-photos, "Date", true)
+
+# extracts Location of the most recent photo
+latest-forest-location = forest-sorted.row-n(0)["Location"]
+
+# counts how many photos are in each Location
+location-counts = count(photos, "Location")
+
+# order locations by most photos first
+location-counts-sorted = order-by(location-counts, "count", true)
+
+# make frequency bar chart of Location column
+chart = freq-bar-chart(photos, "Location")
