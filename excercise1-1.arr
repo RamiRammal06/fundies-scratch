@@ -27,5 +27,5 @@ location-counts = count(photos, "Location")
 # order locations by most photos first
 location-counts-sorted = order-by(location-counts, "count", true)
 
-# make frequency bar chart of Location column
+# frequency bar chart of Location column
 chart = freq-bar-chart(photos, "Location")
