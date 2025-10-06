@@ -2,6 +2,7 @@ use context dcic2024
 include csv
 include data-source
 include table
+#Flights table
 flights = load-table:
   rownames :: Number,
   dep_time :: Number,
@@ -35,3 +36,18 @@ flights = load-table:
   sanitize  hour using num-sanitizer
   sanitize  minute using num-sanitizer
 end
+#functions checks to see if fligt disctance 1500 or greater
+fun is-long-flight(row :: Row)-> Boolean:
+doc: "Checks how long a flight is"
+row["distance"] >= 1500
+end
+#filters out only flight 1500+
+long_flight=filter-with(flights, is-long-flight)
+#puts the long flights in order from greatest to least
+flight-longest=order-by(long_flight,"air_time", false)
+#shows only the longest flight
+longest-flight= flight-longest.row-n(0)
+
+longest-flight["carrier"]
+longest-flight["origin"]
+longest-flight["dest"]
