@@ -48,6 +48,23 @@ flight-longest=order-by(long_flight,"air_time", false)
 #shows only the longest flight
 longest-flight= flight-longest.row-n(0)
 
-longest-flight["carrier"]
-longest-flight["origin"]
-longest-flight["dest"]
+#longest-flight["carrier"]
+#longest-flight["origin"]
+#longest-flight["dest"]
+#checks for flights delayed 30+ minutes
+fun is-delayed-departure(row :: Row)-> Boolean:
+  doc:"finds delayed flight of 30 minutes or higher"
+  row["dep_delay"] >= 30
+end
+#function checks for flights that leave after noon
+fun is-morning-sched-dep(row :: Row)-> Boolean:
+  doc:"checks if scheduled departure time is before noon"
+  row["sched_dep_time"] < 1200
+end
+#checks shows flights delayed for 30+ minutes and is before noon
+delayed_morning_flights= filter-with(filter-with(flights,lam(r): r["dep_delay"] >= 30 end), lam(r) : r["sched_dep_time"] < 1200 end)
+#checks for 30m+ delayed flights, that are before noon, and are longer than 500 distance
+delayed_morning_long_flights= 
+filter-with(filter-with(filter-with(flights,lam(r): r["dep_delay"] >= 30 end), 
+    lam(r) : r["sched_dep_time"] < 1200 end), 
+  lam(r): r["distance"] > 500 end)
