@@ -84,3 +84,27 @@ flights2 = build-column(flights, "dup_key",
     string-to-upper(trim(r["carrier"])) + "-" +
     num-to-string(r["dep_time"])
   end)
+
+
+#changes abbreviated airlines to full airline name
+fun carrier-to-airline(code :: String) -> String:
+  if code == "UA":
+    "United Airlines"
+  else if code == "AA":
+    "American Airlines"
+  else if code == "B6":
+    "JetBlue"
+  else if code == "DL":
+    "Delta Air Lines"
+  else if code == "EV":
+    "ExpressJet"
+  else if code == "WN":
+    "Southwest Airlines"
+  else if code == "OO":
+    "SkyWest Airlines"
+  else:
+    "Other"
+  end
+end
+flights3 = build-column(flights, "airline",
+  lam(r): carrier-to-airline(r["carrier"]) end)
