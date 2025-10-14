@@ -108,3 +108,4 @@ fun carrier-to-airline(code :: String) -> String:
 end
 flights3 = build-column(flights, "airline",
   lam(r): carrier-to-airline(r["carrier"]) end)
+filter-with( 
