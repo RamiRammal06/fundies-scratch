@@ -20,6 +20,8 @@ end
 s1 = student("Ethan", "Gray", 97)
 s2 = student("Oscar", "Young", 92)
 s3 = student("Adrian", "Bennett", 80)
+
+top3 = link(s1.Score, link(s2.Score, link(s3.Score, empty)))
 #count how many of the top-3 students have scores greater than 90
 fun over-90(scores :: List<Number>) -> Number:
   cases (List) scores:
@@ -33,4 +35,4 @@ fun over-90(scores :: List<Number>) -> Number:
   end
 end
 
-      
+over-90(top3)     
