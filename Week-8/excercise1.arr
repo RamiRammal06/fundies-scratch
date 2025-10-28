@@ -18,3 +18,28 @@ check:
   more-than-five(["hi", "world", "python", "Pyret"]) is ["python"]
   more-than-five([]) is []
 end
+
+  
+  
+  fun my-len(l):
+  cases (List) l:
+    | empty => 0
+    | link(f, r) => 1 + my-len(r)
+  end
+end
+
+fun my-sum(l):
+  cases (List) l:
+    | empty => 0
+    | link(f, r) => f + my-sum(r)
+  end
+end
+
+# Calculates the average using my-sum and my-len
+fun my-average(l):
+  if l == empty:
+    raise("Error: no average of an empty list")
+  else:
+    my-sum(l) / my-len(l)
+  end
+end
