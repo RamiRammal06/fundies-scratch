@@ -35,4 +35,4 @@ fun over-90(scores :: List<Number>) -> Number:
   end
 end
 
-over-90(top3)     
+over-90(top3)   
