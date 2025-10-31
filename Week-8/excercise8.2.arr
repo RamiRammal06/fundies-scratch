@@ -25,8 +25,17 @@ end
 fun max-width(r :: River)-> Number:
   cases (River) r:
  | stream(flow) => 0
-    | merge(width, left, right) => num-max(width, max-width(left),max-width(right))
+    | merge(width, left, right) => num-max(width, num-max(max-width(left), max-width(right)))
   end
 where:
-  max-width(
+  max-width(merge-1) is 12
+  max-width(main-river) is 15
+end
+
+fun widen-river( r :: River, n :: Number)-> River:
+  cases (River) r:
+    | stream(flow) => stream(flow)
+    | merge(width, left, right) => 
+      merge(width + n,  widen-river(left,n), widen-river(right, n))
+  end
 end
