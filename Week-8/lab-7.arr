@@ -51,3 +51,29 @@ where:
   deepest-depth(hub1) is 1
   deepest-depth(core) is 2
 end
+
+fun needed-scale(n :: SensorNet) -> Number:
+  cases (SensorNet) n:
+    | sensor(rate)  => 1
+    | hub(bw, l, r) =>
+      block:
+        load = total-load(l) + total-load(r)
+        here = load / bw
+        num-max( num-max(here, needed-scale(l)), needed-scale(r) )
+      end
+  end
+where:
+  # For 'core': max(225/200 = 1.125, hub1: 180/150 = 1.2) = 1.2
+  needed-scale(core) is 1.2
+end
+
+fun apply-scale(n :: SensorNet, s :: Number) -> SensorNet: 
+  cases(SensorNet) n:
+    | sensor(rate) => sensor(rate / s)
+    | hub(bandwidth, left, right) => 
+      hub(bandwidth, apply-scale(left,s), apply-scale(right,s))
+  end
+where:
+   total-load(apply-scale(core, 1.2)) is 187.5
+total-load(apply-scale(core, 1.5)) is 150
+end
