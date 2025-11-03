@@ -41,7 +41,13 @@ where:
   fits-capacities(hub2) is true
 end
 
-fun eepest-depth(n :: SensorNet) -> Number:
+fun deepest-depth(n :: SensorNet) -> Number:
   cases(SensorNet) n:
     | sensor(rate) => 0
     | hub(bandwidth, left, right) => 
+      1 + num-max(deepest-depth(left), deepest-depth(right))
+  end
+where:
+  deepest-depth(hub1) is 1
+  deepest-depth(core) is 2
+end
