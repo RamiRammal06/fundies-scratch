@@ -69,3 +69,5 @@ fun count-rank-children(lst :: List<TaxonomyTree>, r :: String) -> Number:
         count-rank(first, r) + count-rank-children(rest, r)
   end
 end
+
+fun taxen-height
